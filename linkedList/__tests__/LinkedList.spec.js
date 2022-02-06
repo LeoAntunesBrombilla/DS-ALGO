@@ -63,4 +63,30 @@ describe("LinkedList", () => {
     expect(myLinkedList.head).toBe(null);
     expect(myLinkedList.tail).toBe(null);
   });
+
+  it("UNSHIFT - should add a new Node to the beggining of the LinkedList with more than one Node", () => {
+    let myLinkedList = new LinkedList(1);
+
+    myLinkedList.push(2);
+    myLinkedList.push(5);
+    myLinkedList.push(1);
+
+    myLinkedList.unshift(3);
+
+    expect(myLinkedList.head.value).toBe(3);
+    expect(myLinkedList.length).toBe(5);
+  });
+
+  it("UNSHIFT - should add a new Node to the beggining of the LinkedList with 0 Nodes", () => {
+    let myLinkedList = new LinkedList(1);
+
+    myLinkedList.head = null;
+    myLinkedList.tail = null;
+    myLinkedList.length = 0;
+
+    myLinkedList.unshift(3);
+
+    expect(myLinkedList.head.value).toBe(3);
+    expect(myLinkedList.length).toBe(1);
+  });
 });
