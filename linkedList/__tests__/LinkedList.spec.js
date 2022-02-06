@@ -89,4 +89,37 @@ describe("LinkedList", () => {
     expect(myLinkedList.head.value).toBe(3);
     expect(myLinkedList.length).toBe(1);
   });
+
+  it("SHIFT - return undefined if LinkedList is empty", () => {
+    let myLinkedList = new LinkedList(2);
+
+    myLinkedList.head = null;
+    myLinkedList.tail = null;
+    myLinkedList.length = 0;
+
+    const result = myLinkedList.shift();
+
+    expect(result).toBe(undefined);
+    expect(myLinkedList.length).toBe(0);
+  });
+
+  it("SHIFT - should add a remove the first Node", () => {
+    let myLinkedList = new LinkedList(2);
+
+    myLinkedList.push(1);
+
+    myLinkedList.shift();
+
+    expect(myLinkedList.head).toStrictEqual(new Node(1));
+    expect(myLinkedList.length).toBe(1);
+  });
+
+  it("SHIFT - should point tail to null if LinkedList length is 0", () => {
+    let myLinkedList = new LinkedList(2);
+
+    myLinkedList.shift();
+
+    expect(myLinkedList.length).toBe(0);
+    expect(myLinkedList.tail).toBe(null);
+  });
 });
