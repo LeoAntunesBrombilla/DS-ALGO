@@ -122,4 +122,64 @@ describe("LinkedList", () => {
     expect(myLinkedList.length).toBe(0);
     expect(myLinkedList.tail).toBe(null);
   });
+
+  it("GET - should find the respective Node in relation to the index", () => {
+    const myLinkedList = new LinkedList(3);
+    myLinkedList.push(4);
+    myLinkedList.push(2);
+    myLinkedList.push(5);
+
+    const result = myLinkedList.get(2);
+
+    expect(result.value).toBe(2);
+    expect(result.next).toStrictEqual(new Node(5));
+  });
+
+  it("GET - should return undefined if index < 0", () => {
+    const myLinkedList = new LinkedList(3);
+    myLinkedList.push(4);
+    myLinkedList.push(2);
+    myLinkedList.push(5);
+
+    const result = myLinkedList.get(-1);
+
+    expect(result).toBe(undefined);
+  });
+
+  it("GET - should return undefined if index is out of bound", () => {
+    const myLinkedList = new LinkedList(3);
+    myLinkedList.push(4);
+    myLinkedList.push(2);
+    myLinkedList.push(5);
+
+    const result = myLinkedList.get(100);
+
+    expect(result).toBe(undefined);
+  });
+
+  it("SET - should return true and set the value if has the Node", () => {
+    const myLinkedList = new LinkedList(2);
+
+    myLinkedList.push(4);
+    myLinkedList.push(2);
+    myLinkedList.push(5);
+
+    const result = myLinkedList.set(2, 100);
+
+    expect(result).toBe(true);
+    expect(myLinkedList.get(2).value).toBe(100);
+  });
+
+  it("SET - should return false and Not set the value if index is out of bounds", () => {
+    const myLinkedList = new LinkedList(2);
+
+    myLinkedList.push(4);
+    myLinkedList.push(2);
+    myLinkedList.push(5);
+
+    const result = myLinkedList.set(-6, 100);
+
+    expect(result).toBe(false);
+    expect(myLinkedList.get(2).value).toBe(2);
+  });
 });
