@@ -103,7 +103,7 @@ describe("LinkedList", () => {
     expect(myLinkedList.length).toBe(0);
   });
 
-  it("SHIFT - should add a remove the first Node", () => {
+  it("SHIFT - should remove the first Node", () => {
     let myLinkedList = new LinkedList(2);
 
     myLinkedList.push(1);
@@ -181,5 +181,42 @@ describe("LinkedList", () => {
 
     expect(result).toBe(false);
     expect(myLinkedList.get(2).value).toBe(2);
+  });
+
+  it("INSERT - should return true insert a Node on the middle of the LinkedList", () => {
+    const myLinkedList = new LinkedList(0);
+    myLinkedList.push(2);
+
+    const result = myLinkedList.insert(1, 1);
+
+    expect(result).toBe(true);
+    expect(myLinkedList.get(1).value).toBe(1);
+    expect(myLinkedList.get(1).next).toStrictEqual(new Node(2));
+  });
+
+  it("INSERT - should return true and insert a Node at the beggining of the LinkedList", () => {
+    const myLinkedList = new LinkedList(0);
+
+    myLinkedList.insert(0, 1);
+
+    expect(myLinkedList.head.value).toBe(1);
+  });
+
+  it("INSERT - should return true and insert a Node at the end of the LinkedList", () => {
+    const myLinkedList = new LinkedList(0);
+
+    myLinkedList.push(3);
+
+    myLinkedList.insert(2, 1);
+
+    expect(myLinkedList.tail.value).toBe(1);
+  });
+
+  it("INSERT - should return false and NOT insert a Node on the LinkedList - index out of bounds", () => {
+    const myLinkedList = new LinkedList(0);
+
+    const result = myLinkedList.insert(100, 1);
+
+    expect(result).toBe(false);
   });
 });
