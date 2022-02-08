@@ -219,4 +219,66 @@ describe("LinkedList", () => {
 
     expect(result).toBe(false);
   });
+
+  it("REMOVE - should remove an Node from the LinkedList", () => {
+    const myLinkedList = new LinkedList(0);
+
+    myLinkedList.push(3);
+    myLinkedList.push(23);
+    myLinkedList.push(7);
+
+    const removedNode = myLinkedList.remove(2);
+
+    expect(removedNode.value).toBe(23);
+    expect(myLinkedList.length).toBe(3);
+  });
+
+  it("REMOVE - should remove the first element from the LinkedList", () => {
+    const myLinkedList = new LinkedList(0);
+
+    myLinkedList.push(3);
+    myLinkedList.push(23);
+
+    const removedNode = myLinkedList.remove(0);
+
+    expect(removedNode.value).toBe(0);
+    expect(myLinkedList.length).toBe(2);
+  });
+
+  it("REMOVE - should remove the last element from the LinkedList", () => {
+    const myLinkedList = new LinkedList(0);
+
+    myLinkedList.push(3);
+    myLinkedList.push(23);
+    myLinkedList.push(7);
+
+    const removedNode = myLinkedList.remove(3);
+
+    expect(removedNode.value).toBe(7);
+    expect(myLinkedList.length).toBe(3);
+  });
+
+  it("REMOVE - should not remove a Node if index is out of bounds", () => {
+    const myLinkedList = new LinkedList(0);
+
+    myLinkedList.push(3);
+    myLinkedList.push(23);
+    myLinkedList.push(7);
+
+    const removedNode = myLinkedList.remove(100);
+
+    expect(removedNode).toBe(false);
+    expect(myLinkedList.length).toBe(4);
+  });
+
+  it("REVERSE - should reverse the LinkedList", () => {
+    const myLinkedList = new LinkedList(1);
+    myLinkedList.push(2);
+    myLinkedList.push(3);
+
+    const newLinkedList = myLinkedList.reverse();
+
+    expect(newLinkedList.head.value).toBe(3);
+    expect(newLinkedList.tail.value).toBe(1);
+  });
 });
